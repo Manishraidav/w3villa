@@ -7,7 +7,7 @@ I have used mongodb, Express, Reactjs, Nodejs
       path backend/login.js
 
 ## starting the frontend 
-    open app folder
+    go to app folder
     run- npm start  
 
   # code for register and login is in app.js file       
