@@ -7,4 +7,7 @@ I have used mongodb, Express, Reactjs, Nodejs
 
 ## starting the frontend 
     open app folder
-    run- npm start    
+    run- npm start  
+
+  code for register and login is in app.js file
+  code for CRUD application is in application.js file and this file is again imported in app.js file
