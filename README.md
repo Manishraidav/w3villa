@@ -3,8 +3,8 @@ I have used mongodb, Express, Reactjs, Nodejs
 
 # In order start the app follow these steps
 ## Starting the backend server 
-    1. go to terminal and run a nodemon run command for index.js
-      path backend/index.js
+    1. go to terminal and run a nodemon run command for login.js
+      path backend/login.js
 
 ## starting the frontend 
     open app folder
