@@ -24,6 +24,7 @@ const val=stored_data.filter((e)=>
 )
 
 if (val.length!==0){alert("sucess") 
+localStorage.setItem("user",JSON.stringify(val[0]))
 window.location.assign("/application")}
 else(alert("invalid user"))
 
