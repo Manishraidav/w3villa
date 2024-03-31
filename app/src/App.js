@@ -14,7 +14,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      
       <Routes>
+        
         
         <Route path="/" element={<Register collect_detail={customer_detail_collector}/>}/>
         <Route path="/login" element={<Login apidata_customer={customer_detail}/>}/>
