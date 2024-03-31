@@ -1,47 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Application.css"
 
 function Application() {
+    const [name,newName] = useState("")
     const [data,newdata]=useState("")                                     
     const [DataList,NewData_list]=useState([])                                   //// all stored data
     const [edit,editsave]=useState("")
-    // const[dipidency,changedepidency]=useState(0)
-    // const[dipidency1,changedepidency1]=useState(10)
+    const[dipidency,changedepidency]=useState(0)
+    const[dipidency1,changedepidency1]=useState(10)
     
     
-    
-
-
-    // useEffect(()=>{
-    //     async function fetchdata(){
-    //         const data=await fetch("http://localhost:4000/data",{
-    //         method:"GET"
-    //     })
-        
-    //     const newdata=await data.json()
-    //     NewData_list(newdata)
-    //     }
-    //     fetchdata()
-
-    // },[dipidency,dipidency1])
-
-  
-   
-    // const submitEventHandler= async()=>{
-    //     if(data!==""){
-    //         NewData_list([...DataList,{data,data_id:Math.random(),condition:"hide"}]) 
-    //         newdata("")   
-    //     }           
-       
-     
-        
-    //    }
-    // const DeleteHandle=(id)=>{
-        
-    //     const newlist=DataList.filter((data)=>data.data_id!==id)                   //// for delete one list
-    //     NewData_list(newlist)
-
-    // }
 
 
 
@@ -49,7 +17,7 @@ function Application() {
         const id=Math.random()
         const data2= localStorage.getItem("user")
         const email=JSON.parse(data2).email
-        console.log(email)
+    
         fetch("http://localhost:4000/data",{
             method:"POST",
             body:JSON.stringify({data,data_id:id,data_tag:"hide",unique_user:email}),
@@ -60,8 +28,8 @@ function Application() {
          .then((data)=>console.log())
          .catch((err=>console.log(err)))
 
-        //  changedepidency(dipidency+1)
-        //  changedepidency1(dipidency+1)
+         changedepidency(dipidency+1)
+         changedepidency1(dipidency+1)
          
         
     }
@@ -77,8 +45,8 @@ function Application() {
          }).then((res)=>res.json())
          .then((data)=>console.log(data))
          .catch((err=>console.log(err)))
-        //  changedepidency(dipidency+1)
-        //  changedepidency1(dipidency+1)
+         changedepidency(dipidency+1)
+         changedepidency1(dipidency+1)
         
     }
 
@@ -104,35 +72,42 @@ function Application() {
                     "content-type":"application/json"
                 }
             })
-            // changedepidency(dipidency+1)
-            // changedepidency1(dipidency+1)
+            changedepidency(dipidency+1)
+            changedepidency1(dipidency+1)
 
         
         }
         }
-
-        const showdata=async()=>{
-            const data2= localStorage.getItem("user")
-             const email=JSON.parse(data2).email
-             console.log({email})
-            
-            fetch("http://localhost:4000/fetchdata",{
-            method:"POST",
-            body:JSON.stringify({email}),
-            headers:{
-               'content-type':'application/json'
+        useEffect(()=>{
+            const fetchdata = async()=>{
+                const data2= localStorage.getItem("user")
+                const email=JSON.parse(data2).email
+                
+               
+               fetch("http://localhost:4000/fetchdata",{
+               method:"POST",
+               body:JSON.stringify({email}),
+               headers:{
+                  'content-type':'application/json'
+               }
+            }).then((res)=>res.json())
+               .then((data)=>NewData_list(data))
+               .catch((err)=>{})
             }
-         }).then((res)=>res.json())
-            .then((data)=>NewData_list(data))
-            .catch((err)=>{})
-        }
+            fetchdata()
+        },[dipidency,dipidency1])
+
+     
 
 
-
-
+useEffect(()=>{
+    const User = localStorage.getItem("user")
+    const User1  = JSON.parse(User).firstname
+    newName(User1)
+},[name])
         
 
-    
+  
 
  
     
@@ -141,6 +116,10 @@ function Application() {
   
   return (
     <div>
+        <div style={{display:"flex",width:"100%",alignItems:"center", justifyContent:"center"}}>
+            <p style={{fontSize:"20px", color:"blue"}}>Hi {name}</p>
+            <button onClick={()=>{localStorage.removeItem("user");window.location.assign("/")}} style={{height:"20px", marginLeft:"15px"}}>logout</button>
+        </div>
           <div className='application'>
              <div className='main_container'>
                 <div className='input_button'>
@@ -150,7 +129,6 @@ function Application() {
                     </div>
                 </div>
                 <hr/>
-                <button onClick={showdata}>show</button>
                 
                 
                 <div className='list'>
@@ -185,19 +163,4 @@ function Application() {
 export default Application
 
 
-
-// if(data!==""){
-//     const id=Math.random()
-//     newdata("")
-//     await fetch("http://localhost:2000/",{
-//         method:"POST",
-//         body:JSON.stringify({data,data_id:id,data_tag}),
-//         headers:{
-//           'content-type':'application/json'
-//         }
-        
-//       })
-      
-      
-//   }
 
