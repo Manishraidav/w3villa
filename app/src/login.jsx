@@ -15,6 +15,8 @@ export default function Login(prop) {
  const userdata= await  fetch("http://localhost:4000/",{
   method:"GET"
 })
+.catch((err)=>console.log(err))
+
 const stored_data= await userdata.json() 
 
 const val=stored_data.filter((e)=>
