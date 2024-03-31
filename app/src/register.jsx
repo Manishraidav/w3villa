@@ -37,7 +37,9 @@ export default function Register(prop) {
                               'content-type':'application/json'
                            }
                         })
+                        .then((data)=>console.log(data)).catch((error)=>console.log(error))
                         
+                        localStorage.setItem("user",JSON.stringify(persondetail))
 
 
 
