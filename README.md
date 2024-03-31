@@ -5,6 +5,7 @@ I have used mongodb, Express, Reactjs, Nodejs
 ## Starting the backend server 
     1. go to terminal and run a nodemon run command for login.js
       path backend/login.js
+      nodemon start login.js
 
 ## starting the frontend 
     go to app folder
