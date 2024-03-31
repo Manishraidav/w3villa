@@ -39,7 +39,8 @@ export default function Register(prop) {
                         })
                         .then((data)=>console.log(data)).catch((error)=>console.log(error))
                         
-                        localStorage.setItem("user",JSON.stringify(persondetail))
+                        
+                        window.location.assign("/login")
 
 
 
