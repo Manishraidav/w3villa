@@ -2,8 +2,8 @@ import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Application from "./Application";
 import Login from "./login";
+import ProtectedComponent from "./protect";
 import Register from "./register";
-
 
 function App() {
   const [customer_detail,add_customer_detail]=useState([{email:"check",password:"check"}])
@@ -15,9 +15,12 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Routes>
+        
         <Route path="/" element={<Register collect_detail={customer_detail_collector}/>}/>
         <Route path="/login" element={<Login apidata_customer={customer_detail}/>}/>
+        <Route element={<ProtectedComponent/>}>
         <Route path="/application" element={<Application/>}/>
+        </Route>
       </Routes>
       </BrowserRouter>
       
