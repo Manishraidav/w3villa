@@ -95,16 +95,7 @@ app.post("/fetchdata",async (req,res)=>{
 
 
 
-        
-  
-
-
-
-
-
-
-
-
+    
 
 
 app.listen(4000,()=>{
